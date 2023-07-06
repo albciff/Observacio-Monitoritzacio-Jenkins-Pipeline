@@ -1,0 +1,15 @@
+groups:
+  - name: JenkinsMainQA
+    rules:
+      - alert: Indisponibilitat
+        # condicions per a alert
+        # ES PODEN AGLUTINAR MES EXPRESSIONS?
+        expr: diskspace == 0 
+        for: 10s
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'La instancia principal de Jenkins presenta indisponibilitats'
+          description: '{{ $labels.instance }} {{ $labels.job }} has been down for more than 1 minute.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'

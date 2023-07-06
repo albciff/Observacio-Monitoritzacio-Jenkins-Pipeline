@@ -1,0 +1,12 @@
+modules:
+  default:
+    metrics:
+    - name: diskspace
+      path: '{.disk-space.healthy}'
+    - name: plugins
+      path: '{.plugins.healthy}'
+    - name: temporaryspace
+      path: '{.temporary-space.healthy}'
+    - name: threaddeadlock
+      path: '{.thread-deadlock.healthy}'
+    valid_status_codes: [200,500]

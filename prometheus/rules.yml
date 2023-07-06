@@ -1,0 +1,47 @@
+groups:
+  - name: JenkinsMainQA
+    rules:
+      - alert: Problemes espai a disk
+        # condicions per a alerta
+        expr: diskspace == 0
+        for: 1m
+        # Annotation - Informació addicional que arribarà amb  l'avís
+        annotations:
+          title: '{{ $labels.instance }} - Espai a disc esta per sota el mínim establert'
+          description: '{{ $labels.instance }} {{ $labels.job }} està fallant durant més de 1 minut.'
+        # Labels - classificació de severitat per a poder usar-la en els filtres
+        labels:
+          severity: 'critical'
+      - alert: Plugin/s no carrega/en
+        # condicions per a alerta
+        expr: plugins == 0
+        for: 1m
+        # Annotation - Informació addicional que arribarà amb  l'avís
+        annotations:
+          title: '{{ $labels.instance }} - Algun/s plguin/s no ha carregat correctament'
+          description: '{{ $labels.instance }} {{ $labels.job }} està fallant durant més de 1 minut.'
+        # Labels - classificació de severitat per a poder usar-la en els filtres
+        labels:
+          severity: 'critical'
+      - alert: Problemes espai temporal
+        # condicions per a alert
+        expr: temporaryspace == 0
+        for: 1m
+        # Annotation - Informació addicional que arribarà amb  l'avís
+        annotations:
+          title: '{{ $labels.instance }} - L'' espai temporal està per sota el mínim establert'
+          description: '{{ $labels.instance }} {{ $labels.job }} està fallant durant més de 1 minut.'
+        # Labels - classificació de severitat per a poder usar-la en els filtres
+        labels:
+          severity: 'critical'
+      - alert: Thread bloquejats
+        # condicions per a alert
+        expr: threaddeadlock == 0
+        for: 1m
+        # Annotation - Informació addicional que arribarà amb  l'avís
+        annotations:
+          title: '{{ $labels.instance }} - Hi ha threads en dead lock a Jenkins!'
+          description: '{{ $labels.instance }} {{ $labels.job }} està fallant durant més de 1 minut.'
+        # Labels - classificació de severitat per a poder usar-la en els filtres
+        labels:
+          severity: 'critical'

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.44.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/rules.yml:/etc/prometheus/rules.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "80:9090"
+  json-exporter:
+    image: prometheuscommunity/json-exporter:v0.6.0
+    container_name: json-exporter
+    volumes:
+      - ./json-exporter/config.yml:/config.yml
+    ports:
+      - "7979:7979"
+  alertmanager:
+    image: prom/alertmanager:v0.25.0
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - alertmanager_data:/data
+    ports:
+      - "9093:9093"
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  alertmanager_data:
