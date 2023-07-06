@@ -10,13 +10,12 @@ alerting:
     - static_configs:
         - targets:
           # Alertmanager's default port is 9093
-          - 10.123.1.44:9093
+          # - 10.123.1.44:9093 -> Per a l'environment de GIQ 
+            - localhost:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
   - rules.yml
-  # - "first_rules.yml"
-  # - "second_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
@@ -26,23 +25,16 @@ scrape_configs:
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-
     static_configs:
       - targets: ["localhost:9090"]
-  - job_name: 'Spring Boot Application input'
-    metrics_path: '/actuator/prometheus'
-    scrape_interval: 3s
-    static_configs:
-      - targets: ['10.120.1.242:8085']
-        labels:
-          application: 'app ST queries'
 
   - job_name: 'Jenkins QA'
     #scheme: https
     metrics_path: '/prometheus'
     scrape_interval: 15s
     static_configs:
-     - targets: ['10.123.1.30:8080']
+     # S'ha de configurar amb la IP:port de jenkins on s'ha instal·lat el prometheus
+     - targets: ['10.123.1.30:8080'] 
        labels:
          application: 'jenkins data'
 
@@ -54,7 +46,8 @@ scrape_configs:
     scrape_interval: 15s
     static_configs:
      - targets: 
-       - http://10.123.1.30:8080/metrics/Thni4u2v3kBLuGNbsXUcg9um2p8UWvHwmZHJbdX__k7QninbXOoVZIO95KFqZykV/healthcheck
+         # S'ha de configurar amb la IP:port de jenkins i amb la key generada al manager per al plugin de metrics!
+         - http://10.123.1.30:8080/metrics/Thni4u2v3kBLuGNbsXUcg9um2p8UWvHwmZHJbdX__k7QninbXOoVZIO95KFqZykV/healthcheck 
        labels:
          application: 'jenkins data'
     relabel_configs:
@@ -63,4 +56,4 @@ scrape_configs:
      - source_labels: [__param_target]
        target_label: instance
      - target_label: __address__
-       replacement: 10.123.1.44:7979
+       replacement: localhost:7979 # JSON-EXPORTER -> es l'endpoint per fer la transformació del metrics que publica jenkins
