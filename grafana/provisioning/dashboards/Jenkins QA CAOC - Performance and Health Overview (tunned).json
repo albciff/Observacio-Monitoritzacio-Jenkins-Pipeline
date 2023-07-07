@@ -1,4 +1,53 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_CAOC_PROMETHEUS",
+      "label": "Jenkins GIQ Metrics Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.1"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph (old)",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -20,14 +69,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 9964,
   "graphTooltip": 0,
-  "id": 13,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -95,7 +144,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "rate(jenkins_job_building_duration_count[1m])",
           "refId": "A"
@@ -111,7 +160,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "editable": true,
       "error": false,
@@ -157,7 +206,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_job_queuing_duration",
           "format": "time_series",
@@ -199,7 +248,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -263,7 +312,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "rate(jenkins_job_queuing_duration_count[1m])",
           "refId": "A"
@@ -275,7 +324,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -343,7 +392,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "(vm_memory_total_max - vm_memory_total_used) / vm_memory_total_max * 100.0",
           "format": "time_series",
@@ -358,7 +407,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -426,7 +475,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "vm_memory_total_used",
           "format": "time_series",
@@ -440,7 +489,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "description": "Percentatge de threads per cadascún dels estats",
       "fieldConfig": {
@@ -538,7 +587,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -558,7 +607,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -628,7 +677,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_health_check_score",
           "format": "time_series",
@@ -643,7 +692,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -710,7 +759,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_node_offline_value",
           "refId": "A",
@@ -723,7 +772,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -790,7 +839,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "vm_cpu_load",
           "format": "time_series",
@@ -804,7 +853,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -872,7 +921,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "vm_uptime_milliseconds",
           "format": "time_series",
@@ -888,7 +937,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -955,7 +1004,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_node_builds_count",
           "format": "time_series",
@@ -971,7 +1020,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1037,7 +1086,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_runs_success_total",
           "format": "time_series",
@@ -1052,7 +1101,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1118,7 +1167,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_runs_aborted_total",
           "format": "time_series",
@@ -1134,7 +1183,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1200,7 +1249,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_runs_unstable_total",
           "format": "time_series",
@@ -1216,7 +1265,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1282,7 +1331,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_runs_failure_total",
           "format": "time_series",
@@ -1297,7 +1346,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1364,7 +1413,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_queue_size_value",
           "format": "time_series",
@@ -1379,7 +1428,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1446,7 +1495,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_executor_free_value",
           "format": "time_series",
@@ -1464,7 +1513,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "editable": true,
       "error": false,
@@ -1514,7 +1563,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "avg(sum(jenkins_job_building_duration)/sum(jenkins_job_building_duration_count))",
           "format": "time_series",
@@ -1558,7 +1607,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1639,7 +1688,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "default_jenkins_builds_last_build_duration_milliseconds",
@@ -1656,7 +1705,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+        "uid": "DS_CAOC_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1720,7 +1769,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+            "uid": "DS_CAOC_PROMETHEUS"
           },
           "expr": "jenkins_executor_in_use_value",
           "refId": "A"

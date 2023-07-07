@@ -1,12 +1,13 @@
 apiVersion: 1
 
 datasources:
-  - name: Jenkins GIQ Metrics Prometheus
+  - name: 'Jenkins GIQ Metrics Prometheus'
     default: true
     type: prometheus
     # Access mode - proxy (server in the UI) or direct (browser in the UI).
     access: proxy
     url: http://host.docker.internal:80
+    uid: 'DS_CAOC_PROMETHEUS'
     jsonData:
     httpMethod: POST
     manageAlerts: true
