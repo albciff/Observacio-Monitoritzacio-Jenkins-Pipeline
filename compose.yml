@@ -45,6 +45,10 @@ services:
     ports:
       - "8080:3000"
 
+  # TODO: Afegir JAEGER and that's all :)!
+
+  # TODO: Es podria fins i tot afegir un jenkins... però igual ja es liar-se molt
+
 networks:
   default:
     driver: bridge
