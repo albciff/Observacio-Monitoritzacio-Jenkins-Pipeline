@@ -1,0 +1,539 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 16,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "panels": [],
+      "title": "Jobs",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Top10 Jobs que tenen el temps d'execució més alt",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "topk(10,default_jenkins_builds_duration_milliseconds_summary_sum/default_jenkins_builds_duration_milliseconds_summary_count)",
+          "instant": true,
+          "legendFormat": "{{jenkins_job}}{{jenkins_job}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Top10 Jobs Lents",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Top10 Jobs que tenen el temps d'execució més baix",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bottomk(10,default_jenkins_builds_duration_milliseconds_summary_sum/default_jenkins_builds_duration_milliseconds_summary_count)",
+          "instant": true,
+          "legendFormat": "{{jenkins_job}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Top10 Jobs Rapids",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Top10 Jobs per menys execucions finalitzades sobre el total.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-red",
+                "value": 0.01
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 0.1
+              },
+              {
+                "color": "red",
+                "value": 0.2
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bottomk(10,\r\ndefault_jenkins_builds_success_build_count_total{jenkins_job=~\".*\"}\r\n  / \r\ndefault_jenkins_builds_duration_milliseconds_summary_count{jenkins_job=~\".*\"}\r\n)",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Top10 Jobs Fallits sobre el total (low is worst)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "application": true,
+              "buildable": true,
+              "instance": true,
+              "job": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Value": "execucions correctes sobre el total",
+              "instance": "",
+              "jenkins_job": "",
+              "job": "",
+              "repo": "Repositori de github"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Top10 Jobs amb resultat final d'execució fallida",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "topk(10,default_jenkins_builds_failed_build_count_total)",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Top10 Jobs Fallits",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "application": true,
+              "buildable": true,
+              "instance": true,
+              "job": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Value": "Numero de builds fallits",
+              "instance": "",
+              "jenkins_job": "",
+              "job": "",
+              "repo": "Repositori de github"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 7,
+      "panels": [],
+      "title": "Etapes",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Mostra la duració mitja (sum de duracio d'execucions/nombre total d'execucions)",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 300000
+              },
+              {
+                "color": "red",
+                "value": 600000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(default_jenkins_builds_last_stage_duration_milliseconds_summary_sum) by (stage) \r\n/\r\nsum(default_jenkins_builds_last_stage_duration_milliseconds_summary_count) by (stage)",
+          "instant": false,
+          "legendFormat": "{{stage}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Etapes - Duració mitja",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+      },
+      "description": "Mostra el top20 de les etapes per job que més costoses han estat en temps",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 300000
+              },
+              {
+                "color": "red",
+                "value": 600000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ebb4d4c9-9ffa-493c-87b7-477a1229c1d6"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "topk(20,sum(default_jenkins_builds_last_stage_duration_milliseconds_summary_sum) by (jenkins_job,stage)\r\n/\r\nsum(default_jenkins_builds_last_stage_duration_milliseconds_summary_count) by (jenkins_job,stage))",
+          "instant": true,
+          "legendFormat": "{{stage}} {{jenkins_job}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Top20 - Etapes per job més costoses en temps",
+      "type": "stat"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Jenkins QA - Estat dels Jobs",
+  "uid": "f3d3aff8-ac3b-46cf-8af9-401f9093499b",
+  "version": 11,
+  "weekStart": ""
+}

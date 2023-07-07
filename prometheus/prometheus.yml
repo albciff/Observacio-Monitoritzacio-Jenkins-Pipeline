@@ -11,7 +11,7 @@ alerting:
         - targets:
           # Alertmanager's default port is 9093
           # - 10.123.1.44:9093 -> Per a l'environment de GIQ 
-            - localhost:9093
+            - host.docker.internal:9093 # Alertmanager corre en la mateixa maquina amb el compose :)
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -56,4 +56,6 @@ scrape_configs:
      - source_labels: [__param_target]
        target_label: instance
      - target_label: __address__
-       replacement: localhost:7979 # JSON-EXPORTER -> es l'endpoint per fer la transformació del metrics que publica jenkins
+     # JSON-EXPORTER -> es l'endpoint per fer la transformació del metrics que publica jenkins. 
+     # Corre en el compose en la mateixa maquina
+       replacement: host.docker.internal:7979 

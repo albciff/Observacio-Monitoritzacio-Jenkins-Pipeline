@@ -1,6 +1,10 @@
 version: "3"
 
+#extra_hosts:
+#  - "host.docker.internal:172.17.0.1"
+
 services:
+
   prometheus:
     image: prom/prometheus:v2.44.0
     container_name: prometheus
@@ -10,6 +14,7 @@ services:
       - prometheus_data:/prometheus
     ports:
       - "80:9090"
+
   json-exporter:
     image: prometheuscommunity/json-exporter:v0.6.0
     container_name: json-exporter
@@ -17,6 +22,7 @@ services:
       - ./json-exporter/config.yml:/config.yml
     ports:
       - "7979:7979"
+
   alertmanager:
     image: prom/alertmanager:v0.25.0
     container_name: alertmanager
@@ -26,6 +32,18 @@ services:
     ports:
       - "9093:9093"
 
+  grafana:
+    image: grafana/grafana-oss:9.5.1
+    container_name: grafana
+    environment:
+      - GF_PATHS_CONFIG=/etc/grafana/custom.ini
+    volumes:
+      - ./grafana/custom.ini:/etc/grafana/custom.ini
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "8080:3000"
+
 networks:
   default:
     driver: bridge
@@ -33,3 +51,4 @@ networks:
 volumes:
   prometheus_data:
   alertmanager_data:
+  grafana_data:

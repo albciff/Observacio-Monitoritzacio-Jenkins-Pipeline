@@ -32,3 +32,16 @@ Als targets dels `static_configs`
 S'ha de configurar el endpoint del webhook de slack al paràmetre `slack_api` del [alertmanager.yml](./alertmanager/alertmanager.yml).
 
 Sinó és vol notificar via slack, és pot user el fitxer [alertmanager_exemple_webhook.yml](./alertmanager/alertmanager_exemple_webhook.yml) renombrant-lo o referenciant aquest al [compose.yml](./compose.yaml)
+
+## Grafana
+
+Config de grafana és pot trobar a [custom.ini](./grafana/custom.ini).
+
+Configurats dashboards per defecte a grafana/provisioning/dashboards.
+
+Customitzades parametres d'arrencada, credencials admin `user/pwd` -> `albciff/albciff`.
+
+
+# Notes
+
+S'usa `host.docker.internal` per a la interconnexió d'elements ja que tots acaben mappejant amb un port del host i s'interconnecten a través de la IP d'aquest.
