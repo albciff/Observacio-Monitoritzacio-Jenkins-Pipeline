@@ -40,6 +40,7 @@ services:
     volumes:
       - ./grafana/custom.ini:/etc/grafana/custom.ini
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - grafana_data:/var/lib/grafana
     ports:
       - "8080:3000"
