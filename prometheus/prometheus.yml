@@ -33,8 +33,9 @@ scrape_configs:
     metrics_path: '/prometheus'
     scrape_interval: 15s
     static_configs:
-     # S'ha de configurar amb la IP:port de jenkins on s'ha instal·lat el prometheus
-     - targets: ['10.123.1.30:8080'] 
+     # S'ha de configurar amb la IP:port de jenkins on s'ha instal·lat el plugin de prometheus
+     # Config Jenkins GiQ - targets: [http://10.123.1.30:8080] 
+     - targets: ['host.docker.internal:8080'] 
        labels:
          application: 'jenkins data'
 
@@ -47,7 +48,9 @@ scrape_configs:
     static_configs:
      - targets: 
          # S'ha de configurar amb la IP:port de jenkins i amb la key generada al manager per al plugin de metrics!
-         - http://10.123.1.30:8080/metrics/Thni4u2v3kBLuGNbsXUcg9um2p8UWvHwmZHJbdX__k7QninbXOoVZIO95KFqZykV/healthcheck 
+         # Config Jenkins GiQ - http://10.123.1.30:8080/metrics/Thni4u2v3kBLuGNbsXUcg9um2p8UWvHwmZHJbdX__k7QninbXOoVZIO95KFqZykV/healthcheck 
+         - http://host.docker.internal:8080/metrics/c7XmyYCgT4AfKRmpeWL-_jaY0ia2HWAyZPo4ePjy5Nap2B-wEhxkLTaxv7oaTUNV/healthcheck 
+         
        labels:
          application: 'jenkins data'
     relabel_configs:

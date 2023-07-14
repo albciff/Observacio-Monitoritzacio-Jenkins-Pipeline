@@ -43,12 +43,27 @@ services:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - grafana_data:/var/lib/grafana
     ports:
-      - "8080:3000"
-
-  # TODO: Afegir JAEGER and that's all :)!
-
-  # TODO: Es podria fins i tot afegir un jenkins... però igual ja es liar-se molt
-
+      - "3000:3000"
+  
+  jaeger:
+    image: jaegertracing/all-in-one:1.45
+    container_name: jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "8081:16686"
+      - "14250:14250"
+      - "4317:4317"
+   
+  jenkins:
+    image: jenkins/jenkins:2.414-jdk11
+    container_name: jenkins
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    ports:
+      - "8080:8080"
+       
+      
 networks:
   default:
     driver: bridge
@@ -57,3 +72,4 @@ volumes:
   prometheus_data:
   alertmanager_data:
   grafana_data:
+  jenkins_data:

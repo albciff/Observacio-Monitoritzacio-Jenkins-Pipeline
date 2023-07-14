@@ -1,0 +1,25 @@
+global:
+ resolve_timeout: 1m
+ slack_api_url: 'https://hooks.slack.com/services/<TOKEN>'
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'slack.notis'
+receivers:
+#  - name: 'web.hook'
+#    webhook_configs:
+#      - url: 'http://host.docker.internal:5001/'
+  - name: 'slack.notis'
+    slack_configs:
+     - channel: '#alertes-aoc-qa'
+       send_resolved: true
+       username: 'AOC-QA-TEAM'
+       icon_emoji: ':fire:'
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
